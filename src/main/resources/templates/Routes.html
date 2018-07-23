@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Routes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/routes">Routes<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reservations">Reservations</a>
+                </li>
+            </ul>
+
+        </div>
+        <a th:href="@{/login}">
+            <button type="button" class="btn btn-light">Log Out</button>
+        </a>
+    </nav>
+
+    <h2>Routes</h2>
+    <div th:if="${message}" class="alert alert-success" role="alert">
+        <p th:text="${message}">succes message</p>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Route id</th>
+            <th>Start</th>
+            <th>Destination</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Avaliable Seats</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="route:${routes}">
+            <td th:text="${route.id}"></td>
+            <td th:text="${route.start}"></td>
+            <td th:text="${route.destination}"></td>
+            <td th:text="${route.date}"></td>
+            <td th:text="${route.time}"></td>
+            <td th:text="${route.avaliableseats}"></td>
+
+            <td><a th:href="@{/routes/edit/} + ${route.id}">
+                <button method="GET" action="editRoute" type="button" class="btn btn-primary">Edit</button>
+            </a></td>
+            <td><a th:href="@{/routes/delete/} + ${route.id}">
+                <button method="GET" action="deleteRoute" type="button" class="btn btn-danger">Delete</button>
+            </a></td>
+        </tr>
+        <td><a th:href="@{/routes/add/}">
+            <button method="POST" type="button" class="btn btn-success">Add</button>
+        </a></td>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

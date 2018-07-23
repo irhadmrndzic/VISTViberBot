@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit route</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit route</h2>
+    <div th:if="${message}" class="alert alert-success" role="alert">
+        <p th:text="${message}">succes message</p>
+    </div>
+    <table class="table table-bordered">
+        <tbody>
+        <thead>
+        <tr>
+            <th>Start</th>
+            <th>Destination</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Avaliable Seats</th>
+        </tr>
+        </thead>
+        <form th:action="@{/routes/edit/{id}(id=${model.id})}" th:object="${model}" th:method="POST">
+            <tr>
+                <td><input type="text" th:field="*{start}"></td>
+                <td><input type="text" th:field="*{destination}"></td>
+                <td><input type="date" th:field="*{date}"></td>
+                <td><input type="time" th:field="*{time}"></td>
+                <td><input type="text" th:field="*{avaliableseats}"></td>
+            </tr>
+            </tbody>
+            <button type="submit" class="btn btn-success">Save</button>
+            <a class="btn" th:href="@{/routes}">Cancel</a>
+        </form>
+    </table>
+</div>
+</body>
+</html>
+
+
+
+
+

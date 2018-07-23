@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Reservations</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/routes">Routes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/reservations">Reservations<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+        <a th:href="@{/login}">
+            <button type="button" class="btn btn-light">Log Out</button>
+        </a>
+    </nav>
+
+    <h2>Reservations</h2>
+    <div th:if="${message}" class="alert alert-success" role="alert">
+        <p th:text="${message}">succes message</p>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Reservation id</th>
+            <th>User id</th>
+            <th>Route id</th>
+            <th>Reservead seats</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reservation:${reservations}">
+            <td th:text="${reservation.id}"></td>
+            <td th:text="${reservation.user}"></td>
+            <td th:text="${reservation.route}"></td>
+            <td th:text="${reservation.reserveadSeats}"></td>
+
+            <td><a th:href="@{/reservations/delete/} + ${reservation.id}">
+                <button method="GET" action="deleteReservation" type="button" class="btn btn-danger">Delete</button>
+            </a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

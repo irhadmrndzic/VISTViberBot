@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Login Form with Avatar Image</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+body{
+	font: 15px/1.5 Arial, Helevetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	background: url(http://www.netalogue.com/wp-content/uploads/2017/03/chatbot-880x541.png);
+}
+
+.loginBox{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 350px;
+	min-height: 200px;
+	background: #fff;
+	border-radius: 10px;
+	padding: 40px;
+	box-sizing: border-box;
+}
+
+.user{
+	margin: 0 auto;
+	display: block;
+	width: 120px;
+	height: 120px;
+	margin-bottom: 20px;
+}
+
+h3{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+}
+
+.loginBox input{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.loginBox input[type="text"],
+.loginBox input[type="password"]{
+	border: none;
+	border-bottom: 2px solid #262626;
+	outline: none;
+	height: 40px;
+	color: #262626;
+	background: transparent;
+	font-size: 16px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.loginBox input[type="text"]:focus,
+.loginBox input[type="password"]:focus{
+	border-bottom: 2px solid #7E007E;
+}
+
+.inputBox{
+	position: relative;
+}
+
+.inputBox span{
+	position: absolute;
+	top: 10px;
+	color: #7E007E;
+}
+
+.loginBox input[type="submit"]{
+	height: 40px;
+	background: #7E007E;
+	border: none;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #fff;
+	font-size: 15px;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.loginBox input[type="submit"]:hover{
+	background: #000;
+	color: #fff;
+	transition-duration: 0.5s;
+}
+
+.loginBox a{
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #9929ad;
+	text-align: center;
+	display: block;
+}
+    </style>
+</head>
+<body>
+<div class="loginBox">
+    <img class="user" src="http://www.clker.com/cliparts/c/T/S/m/w/9/purple-car-silouette-hi.png">
+    <h3>bot2share</h3>
+    <form th:action="@{/login}" method="post">
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">
+                Invalid username or password.
+            </div>
+        </div>
+
+        <!--<div th:if="${param.error}">-->
+            <!--<div class="alert alert-info">-->
+                <!--You have been logged out.-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="inputBox">
+            <input type="text" name="username" id="username" placeholder="Username">
+            <span><i class="fa fa-user" aria-hidden="true"></i></span>
+        </div>
+
+        <div class="inputBox">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+        </div>
+        <input type="submit"  value="Log in">
+    </form>
+</div>
+</body>
+</html>
