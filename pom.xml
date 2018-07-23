@@ -75,9 +75,6 @@
 			<artifactId>postgresql</artifactId>
 		</dependency>
 
-
-
-
 	</dependencies>
 
 	<build>
