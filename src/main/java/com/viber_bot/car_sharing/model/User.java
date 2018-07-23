@@ -39,6 +39,22 @@ public class User  {
 
     public String getViberID(){return this.viberID;}
     public String getName(){return this.name;}
+    @Override
+    public String toString() {
+        return this.name + " / " + " Subscribed: " + this.subscribed;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public boolean isSubscribed() {
+        return subscribed;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
 }
 
 

@@ -31,7 +31,7 @@ public class RouteController {
 //        routeService.save(new Route("Neum","Mostar", null, null, 7));
         rList = routeService.findAll();
         model.addAttribute("routes",rList);
-        return "Routes";
+        return "Route/Routes";
     }
 
     @RequestMapping(value="/routes/delete/{id}", method = RequestMethod.GET)
@@ -49,7 +49,7 @@ public class RouteController {
         List<Route> rList = new ArrayList<>();
         rList = routeService.findAll();
         model.addAttribute("routes", rList);
-        return "AddRoute";
+        return "Route/AddRoute";
     }
 
     @RequestMapping(value = "/routes/add", method = RequestMethod.POST)
@@ -73,7 +73,7 @@ public class RouteController {
     public String editRoute(@PathVariable(value = "id") long id, Model model) {
         model.addAttribute("model", routeService.findById(id));
 
-        return "EditRoutes";
+        return "Route/EditRoutes";
     }
 
     @RequestMapping(value = "/routes/edit/{id}", method = RequestMethod.POST)

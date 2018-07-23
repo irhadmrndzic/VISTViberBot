@@ -18,4 +18,18 @@ import java.util.List;
 
 @Controller
 public class WebController {
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String showIndexPage(Model model) {
+        return "Index";
+    }
+
+    @Autowired
+    private UserService userService;
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String getAllUsers(Model model) {
+        List<User> uList = new ArrayList<>();
+        uList = userService.findAll();
+        model.addAttribute("users",uList);
+        return "User/Users";
+    }
 }

@@ -25,7 +25,7 @@ public class ReservationController {
         List<Reservation> rList = new ArrayList<>();
         rList = reservationService.findAll();
         model.addAttribute("reservations",rList);
-        return "Reservations";
+        return "Reservation/Reservations";
     }
 
     @RequestMapping(value="/reservations/delete/{id}", method = RequestMethod.GET)

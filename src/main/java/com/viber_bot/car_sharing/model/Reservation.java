@@ -70,5 +70,11 @@ public class Reservation implements Serializable {
     public void setReserveadSeats(int reserveadSeats) {
         this.reserveadSeats = reserveadSeats;
     }
+    @Override
+    public String toString() {
+        return "Reservation [User = " + user.getName() + " , route start = "
+                + route.getStart() + ", route destination = " + route.getDestination()
+                + "]";
+    }
 
 }

@@ -82,5 +82,10 @@ public class Route {
     public void setAvaliableseats(int avaliableseats) {
         this.avaliableseats = avaliableseats;
     }
+    @Override
+    public String toString() {
+        return "Start: " + this.start + " / "  + " Destination: " + this.destination + " / "
+                + " Date: " + this.date + " / " + " Avaliable seats: " + this.avaliableseats;
+    }
 }
 
