@@ -42,8 +42,10 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
             e.printStackTrace();
         }
 
-        bot.onMessageReceived((event, message, response) -> response.send(message)); // echos everything back
-        bot.onConversationStarted(event -> Futures.immediateFuture(Optional.of( // send 'Hi UserName' when conversation is started
+        // echos everything back
+        bot.onMessageReceived((event, message, response) -> response.send(message));
+        // send 'Hi UserName' when conversation is started
+        bot.onConversationStarted(event -> Futures.immediateFuture(Optional.of(
                 new TextMessage("Hi " + event.getUser().getName() + ", welcome to (car)bot2share"))));
 
 //        viberBot.onMessageReceived((event, message, reponse) -> viberBotService.onMessageRecived(event, message, reponse));
