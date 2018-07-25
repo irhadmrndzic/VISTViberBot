@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Users")
-public class User  {
+public class User {
 
     @Id
     @NotNull
@@ -26,7 +26,6 @@ public class User  {
     private boolean subscribed;
 
 
-
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations = new ArrayList<>();
 
@@ -36,8 +35,13 @@ public class User  {
         this.subscribed = subscribed;
     }
 
-    public String getViberID(){return this.viberId;}
-    public String getName(){return this.name;}
+    public String getViberID() {
+        return this.viberId;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 
     public int getUserID() {
         return userID;
@@ -62,6 +66,7 @@ public class User  {
     public void setSubscribed(boolean subscribed) {
         this.subscribed = subscribed;
     }
+
     public User(String viberId, String name, boolean subscribed) {
 
         this.viberId = viberId;
@@ -83,11 +88,8 @@ public class User  {
         this.name = name;
         this.subscribed = subscribed;
     }
-
     public User() {
     }
-
-
     @Override
     public String toString() {
         return this.name + " / " + " Subscribed: " + this.subscribed;
