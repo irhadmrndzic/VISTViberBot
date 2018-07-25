@@ -29,7 +29,7 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
     private ViberBotService viberBotService;
 
     @Value("$(application.viber-bot.webhook-url)")
-    private String webhookUrl;
+    private String webhookUrl = "https://mysterious-reaches-89780.herokuapp.com/webhook";
 
 
 
