@@ -12,7 +12,7 @@ import java.util.Collection;
 public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name="userID")
@@ -28,8 +28,8 @@ public class Reservation implements Serializable {
     protected Reservation(){
     }
 
-    public Reservation(long id, User user, Route route, int reserveadSeats) {
-        this.id = id;
+    public Reservation( User user, Route route, int reserveadSeats) {
+
         this.user = user;
         this.route = route;
         this.reserveadSeats = reserveadSeats;
@@ -39,11 +39,11 @@ public class Reservation implements Serializable {
         this.reserveadSeats = reservedseats;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long reservationID) {
+    public void setId(int reservationID) {
         this.id = reservationID;
     }
 

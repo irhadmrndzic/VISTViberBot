@@ -7,15 +7,10 @@ import com.viber.bot.api.ViberBot;
 //import com.viber_bot.car_sharing.service.ViberBotService;
 import com.viber.bot.message.TextMessage;
 import com.viber_bot.car_sharing.DemoApplication;
-import com.viber_bot.car_sharing.model.User;
-import com.viber_bot.car_sharing.repository.ViberBotRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
 import java.util.Optional;

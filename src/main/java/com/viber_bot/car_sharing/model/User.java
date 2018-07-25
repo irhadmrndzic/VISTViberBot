@@ -31,6 +31,24 @@ public class User  {
     protected User(){
 
     }
+    //add(new User(user.getId(), user.getName(), true));
+    public User(String id, String name, boolean sub){
+        if (id!=null){
+            int x = Integer.parseInt(id);
+            this.userID = x;
+            this.name = name;
+            this.subscribed = sub;
+        }
+    }
+
+
+    public User(int id, String name,boolean sub){
+
+       this.userID = id;
+        this.name = name;
+        this.subscribed = sub;
+    }
+
 
     public User(String name, boolean subscribed) {
         this.name = name;
@@ -55,6 +73,17 @@ public class User  {
     public List<Reservation> getReservations() {
         return reservations;
     }
+
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public void setSubscribed(boolean subscribed) {
+        this.subscribed = subscribed;
+    }
+
+
 }
 
 

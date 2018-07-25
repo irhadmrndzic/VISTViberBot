@@ -14,4 +14,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     public void deleteById(long id);
     //public long findById(long id);
     public Reservation findById(long id);
+    public  Reservation findByRoute(Route route);
 }

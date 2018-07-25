@@ -25,4 +25,5 @@ public class ReservationService {
     public void save(Reservation reservation){reservationRepository.save(reservation);}
     //public Reservation findById(long id){return  reservationRepository.findById(id);}
     public Reservation findById(long id){return  reservationRepository.findById(id);}
+    public  Reservation getReservationByRoute(Route route){return reservationRepository.findByRoute(route);}
 }

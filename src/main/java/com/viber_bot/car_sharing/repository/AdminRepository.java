@@ -1,9 +1,11 @@
 package com.viber_bot.car_sharing.repository;
 
+import com.viber_bot.car_sharing.model.Admin;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-        import org.springframework.data.jpa.repository.JpaRepository;
+@Repository
+public interface AdminRepository extends JpaRepository<Admin, Integer> {
+        public Admin findByUsername(String username);
 
-//extends JpaRepository<Admin,Integer>
-public interface AdminRepository  {
-//    public Admin findByUsername(String username);
 }

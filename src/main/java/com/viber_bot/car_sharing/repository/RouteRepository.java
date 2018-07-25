@@ -14,6 +14,8 @@ public interface RouteRepository extends JpaRepository<Route, Integer> {
     public void deleteById(long id);
     //public long findById(long id);
     public Route findById(long id);
+    public  List<Route> findAllByViberId(String viberID);
+
 }
 
 

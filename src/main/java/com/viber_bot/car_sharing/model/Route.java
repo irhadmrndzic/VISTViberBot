@@ -18,7 +18,7 @@ public class Route {
     private static final long serialVersionUID = -3009157732242241606L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Column(name = "start")
     private String start;
@@ -37,6 +37,8 @@ public class Route {
 
     @OneToMany(mappedBy = "route")
     private List<Reservation> reservations = new ArrayList<>();
+    @Column(name = "viberId")
+    private String viberId;
 
     protected Route() {
     }
@@ -49,9 +51,28 @@ public class Route {
         this.avaliableseats = avaliableseats;
     }
 
-    public long getId() { return id; }
+    public Route(String start, String destination, LocalDate date, LocalTime time, int avaliableseats,String viberId) {
+        this.start = start;
+        this.destination = destination;
+        this.date = date;
+        this.time = time;
+        this.avaliableseats = avaliableseats;
+        this.viberId = viberId;
+    }
 
-    public void setId(long id) { this.id = id; }
+
+    /*  response.send(new TextMessage("Apply to this route:\n" +
+                    "Start: " + route.getStart() +
+                    "\nDestination: " + route.getDestination() +
+                    "\nDate: " + route.getDate() +
+                    "\nTime: " + route.getTime() +
+                    "\nAvailable seats: " + route.getAvaliableseats(),
+                    keyboard, trackingData));
+*/
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public String getStart() { return start; }
 
