@@ -14,14 +14,14 @@ import com.viber.bot.profile.BotProfile;
 public class BotConfig {
 
     @Value("${application.viber-bot.auth-token}")
-    private String authToken = "45758d2a08b06e2e-47a4b4dcc1e20791-65c6341517db8fa8";
+    private String authToken;
 
     @Value("${application.viber-bot.name}")
-    private String name ="(car)bot2share";
+    private String name;
 
     @Nullable
     @Value("${application.viber-bot.avatar}")
-    private String avatar ="https://images-na.ssl-images-amazon.com/images/I/51-aTeYbibL._SY355_.png";
+    private String avatar;
 
     @Bean
     ViberBot viberBot() {
