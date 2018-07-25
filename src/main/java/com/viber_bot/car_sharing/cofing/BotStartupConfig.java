@@ -32,10 +32,12 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
     private String webhookUrl;
 
 
-
     public void onApplicationEvent(ApplicationReadyEvent appReadyEvent) {
         try {
+            System.out.println("WEBHOOK GET");
+
             bot.setWebhook(webhookUrl).get();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,7 +50,7 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
                 new TextMessage("Hi " + event.getUser().getName() + ", welcome to (car)bot2share"))));
         bot.onMessageReceived((event, message, reponse) -> viberBotService.onMessageReceived(event, message, reponse));
         bot.onConversationStarted((event) -> viberBotService.onConversationStarted(event));
-       bot.onSubscribe((event, response) -> viberBotService.onSubscribe(event, response));
-       bot.onUnsubscribe((event) -> viberBotService.onUnsubscribe(event));
+        bot.onSubscribe((event, response) -> viberBotService.onSubscribe(event, response));
+        bot.onUnsubscribe((event) -> viberBotService.onUnsubscribe(event));
     }
 }
