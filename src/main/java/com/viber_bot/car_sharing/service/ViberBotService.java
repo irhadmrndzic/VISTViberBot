@@ -72,7 +72,7 @@ public class ViberBotService {
     public void onUnsubscribe(IncomingUnsubscribeEvent event) {
         userService.unsubscribe(event.getUserId());
     }
-
+ int a=1;
     public void onMessageReceived(IncomingMessageEvent event, Message message, Response response) {
 
         switch (message.getTrackingData().get("step").toString()) {
