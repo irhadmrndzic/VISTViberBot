@@ -26,9 +26,7 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
     @Value("$(application.viber-bot.webhook-url)")
     private String webhookUrl;
 
-    public static void main(String[] args) {
-        DemoApplication.run(BotStartupConfig.class, args);
-    }
+
 
     public void onApplicationEvent(ApplicationReadyEvent appReadyEvent) {
         try {

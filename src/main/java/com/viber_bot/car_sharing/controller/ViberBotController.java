@@ -34,7 +34,7 @@ public class ViberBotController {
     @Inject
     private ViberSignatureValidator signatureValidator;
 
-    @PostMapping(value = "/webhook", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/webhook", produces = "application/json" )
     public String incoming(@RequestBody String json,
                            @RequestHeader("X-Viber-Content-Signature") String serverSideSignature)
             throws ExecutionException, InterruptedException, IOException {
