@@ -36,6 +36,7 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
         }
 
         // echos everything back
+        System.out.println("USAO");
         bot.onMessageReceived((event, message, response) -> response.send(message));
         // send 'Hi UserName' when conversation is started
         bot.onConversationStarted(event -> Futures.immediateFuture(Optional.of(
