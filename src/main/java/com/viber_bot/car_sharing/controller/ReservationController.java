@@ -29,7 +29,7 @@ public class ReservationController {
     }
 
     @RequestMapping(value="/reservations/delete/{id}", method = RequestMethod.GET)
-    public String deleteReservation(@PathVariable("id") long id, RedirectAttributes redirectAttributes, Model model){
+    public String deleteReservation(@PathVariable("id") int id, RedirectAttributes redirectAttributes, Model model){
         reservationService.delete(id);
         List<Reservation> rList = new ArrayList<>();
         rList = reservationService.findAll();

@@ -35,7 +35,7 @@ public class RouteController {
     }
 
     @RequestMapping(value="/routes/delete/{id}", method = RequestMethod.GET)
-    public String deleteRoute(@PathVariable("id") long id, RedirectAttributes redirectAttributes, Model model){
+    public String deleteRoute(@PathVariable("id") int id, RedirectAttributes redirectAttributes, Model model){
         routeService.delete(id);
         List<Route> rList = new ArrayList<>();
         rList = routeService.findAll();
@@ -70,14 +70,14 @@ public class RouteController {
     }
 
     @RequestMapping(value = "/routes/edit/{id}", method = RequestMethod.GET)
-    public String editRoute(@PathVariable(value = "id") long id, Model model) {
+    public String editRoute(@PathVariable(value = "id") int id, Model model) {
         model.addAttribute("model", routeService.findById(id));
 
         return "Route/EditRoutes";
     }
 
     @RequestMapping(value = "/routes/edit/{id}", method = RequestMethod.POST)
-    public String seditRoute(@PathVariable(value = "id") long id, Model model, @RequestParam(value = "start") String start, @RequestParam(value = "destination") String destination, @RequestParam( value = "date")
+    public String seditRoute(@PathVariable(value = "id") int id, Model model, @RequestParam(value = "start") String start, @RequestParam(value = "destination") String destination, @RequestParam( value = "date")
             String date, @RequestParam(value = "time") String time, @RequestParam(value = "avaliableseats") int avaliableseats, RedirectAttributes redirectAttributes) {
 
         Route route = routeService.findById(id);

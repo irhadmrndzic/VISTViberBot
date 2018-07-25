@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    public List<User> findAll();
+//    public List<User> findAll();
     public User findByViberId(String viberId);
-    void subscribe(String viberId);
-    void unsubscribe(String viberId);
-    public void add(User user);
-    public  User findUser(String viberID);
+//    void subscribe(String viberId);
+//    void unsubscribe(String viberId);
+//    public void add(User user);
+//    public  User findUser(String viberID);
 }

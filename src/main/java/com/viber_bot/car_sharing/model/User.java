@@ -16,8 +16,8 @@ public class User  {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userID;
 
-    @Column(name = "viberID")
-    private String viberID;
+    @Column(name = "viberId")
+    private String viberId;
 
     @Column(name = "name")
     private String name;
@@ -25,65 +25,73 @@ public class User  {
     @Column(name = "subscribed")
     private boolean subscribed;
 
+
+
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations = new ArrayList<>();
 
-    protected User(){
-
-    }
-    //add(new User(user.getId(), user.getName(), true));
-    public User(String id, String name, boolean sub){
-        if (id!=null){
-            int x = Integer.parseInt(id);
-            this.userID = x;
-            this.name = name;
-            this.subscribed = sub;
-        }
-    }
-
-
-    public User(int id, String name,boolean sub){
-
-       this.userID = id;
-        this.name = name;
-        this.subscribed = sub;
-    }
-
-
-    public User(String name, boolean subscribed) {
+    public User(String viberId, boolean subscribed, String name) {
+        this.viberId = viberId;
         this.name = name;
         this.subscribed = subscribed;
     }
 
-    public String getViberID(){return this.viberID;}
+    public String getViberID(){return this.viberId;}
     public String getName(){return this.name;}
-    @Override
-    public String toString() {
-        return this.name + " / " + " Subscribed: " + this.subscribed;
-    }
 
     public int getUserID() {
         return userID;
     }
 
-    public boolean isSubscribed() {
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public void setViberID(String viberID) {
+        this.viberId = viberId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean getSubscribed() {
         return subscribed;
+    }
+
+    public void setSubscribed(boolean subscribed) {
+        this.subscribed = subscribed;
+    }
+    public User(String viberId, String name, boolean subscribed) {
+
+        this.viberId = viberId;
+        this.name = name;
+        this.subscribed = subscribed;
     }
 
     public List<Reservation> getReservations() {
         return reservations;
     }
 
-
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
-    public void setSubscribed(boolean subscribed) {
+    public User(@NotNull int userID, String viberId, String name, boolean subscribed) {
+        this.userID = userID;
+        this.viberId = viberId;
+        this.name = name;
         this.subscribed = subscribed;
     }
 
+    public User() {
+    }
 
+
+    @Override
+    public String toString() {
+        return this.name + " / " + " Subscribed: " + this.subscribed;
+    }
 }
 
 

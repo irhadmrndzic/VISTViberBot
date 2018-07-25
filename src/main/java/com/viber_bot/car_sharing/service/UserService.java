@@ -24,7 +24,9 @@ public class UserService  {
     @Transactional
     public void add(User user){
         User userU = userRepository.findByViberId(user.getViberID());
-        if (userU == null){userRepository.save(user);}
+        if (userU == null){
+            userRepository.save(user);
+        }
     }
 
     @Transactional

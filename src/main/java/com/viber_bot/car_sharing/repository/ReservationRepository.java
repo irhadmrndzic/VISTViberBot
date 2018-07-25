@@ -11,8 +11,8 @@ import java.util.List;
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
     //public void addRoute(Route route);
     public List<Reservation> findAll();
-    public void deleteById(long id);
+    public void deleteById(int id);
     //public long findById(long id);
-    public Reservation findById(long id);
+    public Reservation findById(int id);
     public  Reservation findByRoute(Route route);
 }

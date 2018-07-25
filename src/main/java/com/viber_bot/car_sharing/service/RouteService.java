@@ -18,12 +18,12 @@ public class RouteService {
     }
 
     @Transactional
-    public void delete(long id){
+    public void delete(int id){
         routeRepository.deleteById(id);
     }
     public void save(Route route){routeRepository.save(route);}
     //public Route findById(long id){return  routeRepository.findById(id);}
-    public Route findById(long id){return  routeRepository.findById(id);}
+    public Route findById(int id){return  routeRepository.findById(id);}
     @Transactional
     public Route edit(int id, Route route){
         Route routeToEdit = routeRepository.findById(id);

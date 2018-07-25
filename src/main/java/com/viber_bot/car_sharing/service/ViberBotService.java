@@ -9,14 +9,6 @@ import com.viber.bot.event.incoming.IncomingMessageEvent;
 import com.viber.bot.event.incoming.IncomingSubscribedEvent;
 import com.viber.bot.event.incoming.IncomingUnsubscribeEvent;
 import com.viber.bot.message.*;
-import com.viber.bot.message.Contact;
-
-import com.viber.bot.message.ContactMessage;
-
-import com.viber.bot.message.FileMessage;
-import com.viber.bot.message.KeyboardMessage;
-
-
 import com.viber.bot.profile.UserProfile;
 import com.viber_bot.car_sharing.model.Reservation;
 import com.viber_bot.car_sharing.model.Route;
@@ -195,6 +187,7 @@ public class ViberBotService {
                         null, null, null, null);
 
                 response.send(new TextMessage("Enter destination", null, trackingData));
+
             }
         }
         else if(message.getTrackingData().get("createRoute").equals("enterDestination")) {

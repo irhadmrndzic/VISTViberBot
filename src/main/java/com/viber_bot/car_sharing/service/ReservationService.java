@@ -19,11 +19,11 @@ public class ReservationService {
     }
 
     @Transactional
-    public void delete(long id){
+    public void delete(int id){
         reservationRepository.deleteById(id);
     }
     public void save(Reservation reservation){reservationRepository.save(reservation);}
     //public Reservation findById(long id){return  reservationRepository.findById(id);}
-    public Reservation findById(long id){return  reservationRepository.findById(id);}
+    public Reservation findById(int id){return  reservationRepository.findById(id);}
     public  Reservation getReservationByRoute(Route route){return reservationRepository.findByRoute(route);}
 }

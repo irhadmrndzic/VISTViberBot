@@ -11,9 +11,9 @@ import java.util.List;
 public interface RouteRepository extends JpaRepository<Route, Integer> {
     //public void addRoute(Route route);
     public List<Route> findAll();
-    public void deleteById(long id);
+    public void deleteById(int id);
     //public long findById(long id);
-    public Route findById(long id);
+    public Route findById(int id);
     public  List<Route> findAllByViberId(String viberID);
 
 }
