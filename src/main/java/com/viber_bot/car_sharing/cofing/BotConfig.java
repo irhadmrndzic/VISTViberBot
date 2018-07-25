@@ -20,7 +20,7 @@ public class BotConfig {
     private String name;
 
     @Nullable
-    @Value("${application.viber-bot.avatar:@null}")
+    @Value("${application.viber-bot.avatar}")
     private String avatar;
 
     @Bean
