@@ -32,15 +32,18 @@ public class ViberBotController {
     private ViberBot bot;
 
     @Inject
-    private ViberSignatureValidator signatureValidator;
+    private ViberSignatureValidator viberSignatureValidator;
 
     @PostMapping(value = "/webhook", produces = "application/json")
     public String incoming(@RequestBody String json,
                            @RequestHeader("X-Viber-Content-Signature") String serverSideSignature)
             throws ExecutionException, InterruptedException, IOException {
-        com.google.common.base.Preconditions.checkState(signatureValidator.isSignatureValid(serverSideSignature, json),
-                "invalid signature");
+        com.google.common.base.Preconditions.checkState(viberSignatureValidator.isSignatureValid(serverSideSignature, json), "invalid signature");
         @javax.annotation.Nullable InputStream response = bot.incoming(Request.fromJsonString(json)).get();
         return response != null ? CharStreams.toString(new InputStreamReader(response, Charsets.UTF_16)) : null;
     }
 }
+
+
+
+
