@@ -156,7 +156,7 @@ public class ViberBotService {
                     null,null,null,null,
                     null,null,null,null);
 
-            response.send(new TextMessage("Edit2018", keyboard, trackingData));
+            response.send(new TextMessage("test", keyboard, trackingData));
         }
         else if(message.getTrackingData().get("step").equals("onConversationStarted")) {
             String textMessage = "Hi " + incomingMessageEvent.getSender().getName()
@@ -362,13 +362,13 @@ public class ViberBotService {
 
         button.put("Columns", columns);
         button.put("Rows", rows);
-        button.put("Text", "<font color='#494E67'>" + text + "</font>");
+        button.put("Text", text);
         button.put("TextSize", "medium");
         button.put("TextHAlign", "center");
         button.put("TextVAlign", "center");
         button.put("ActionType", actionType);
         button.put("ActionBody", actionBody);
-        //button.put("ButtonColor",Bgcolor);
+        button.put("ButtonColor",Bgcolor);
         return button;
     }
 
