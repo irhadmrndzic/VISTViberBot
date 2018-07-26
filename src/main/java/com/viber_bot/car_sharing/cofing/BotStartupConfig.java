@@ -34,19 +34,14 @@ import java.util.concurrent.ExecutionException;
 
 @Configuration
 public class BotStartupConfig implements ApplicationListener<ApplicationReadyEvent> {
-
     @Inject
     private ViberBot bot;
-
-    @Inject
-    private ViberSignatureValidator signatureValidator;
 
     @Value("${application.viber-bot.webhook-url}")
     private String webhookUrl;
 
-    public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
-    }
+    @Autowired
+    private ViberBotService viberService;
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent appReadyEvent) {
@@ -56,19 +51,10 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
             e.printStackTrace();
         }
 
-
-        bot.onMessageReceived((event, message, response) -> response.send(message)); // echos everything back
-        bot.onConversationStarted(event -> Futures.immediateFuture(Optional.of( // send 'Hi UserName' when conversation is started
-                new TextMessage("Hi " + event.getUser().getName()))));
-    }
-
-    @PostMapping(value = "/", produces = "application/json")
-    public String incoming(@RequestBody String json,
-                           @RequestHeader("X-Viber-Content-Signature") String serverSideSignature)
-            throws ExecutionException, InterruptedException, IOException {
-        Preconditions.checkState(signatureValidator.isSignatureValid(serverSideSignature, json), "invalid signature");
-        @Nullable InputStream response = bot.incoming(Request.fromJsonString(json)).get();
-        return response != null ? CharStreams.toString(new InputStreamReader(response, Charsets.UTF_16)) : null;
+        bot.onMessageReceived((event, message, response) -> viberService.onMessageReceived(event, message, response));
+        bot.onConversationStarted(event -> viberService.onConversationStarted(event));
+        bot.onSubscribe((event, response) -> viberService.onSubscribe(event, response));
+        bot.onUnsubscribe((event) -> viberService.onUnsubscribe(event));
     }
 
 }
