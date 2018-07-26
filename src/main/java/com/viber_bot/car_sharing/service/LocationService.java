@@ -26,7 +26,7 @@ public class LocationService {
             System.out.println("LAT " + lat);
             System.out.println("LON " + lon);
             String address = "";
-            URL url = new URL("http://maps.googleapis.com/maps/api/geocode/json?latlng" + lat + "," + lon + "&sensor=true");
+            URL url = new URL("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&sensor=true");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = url.openStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
