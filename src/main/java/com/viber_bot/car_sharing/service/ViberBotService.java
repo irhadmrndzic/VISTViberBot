@@ -170,7 +170,7 @@ public class ViberBotService {
         TrackingData trackingData;
         if (message.getTrackingData().get("createRoute").equals("enterStart")) {
 
-
+            System.out.println("!!!!!!!!!  " + message.getMapRepresentation().get("location"));
             String start = locationService.getLocation(message.getMapRepresentation().get("location"));
             System.out.println("START " + start);
             if(start == null) {
