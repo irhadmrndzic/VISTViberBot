@@ -357,7 +357,7 @@ public class ViberBotService {
     }
 
     private Map<String, Object> makeButtons(Integer rows, Integer columns, String text,
-                                            String actionType ,String actionBody,String Bgcolor) {
+                                            String actionType ,String actionBody,String BgColor) {
         Map<String, Object> button = new HashMap<String, Object>();
 
         button.put("Columns", columns);
@@ -368,8 +368,9 @@ public class ViberBotService {
         button.put("TextVAlign", "center");
         button.put("ActionType", actionType);
         button.put("ActionBody", actionBody);
-        button.put("ButtonColor",Bgcolor);
-        
+        //bila pod komentarom
+        button.put("ButtonColor",BgColor);
+
         return button;
     }
 
