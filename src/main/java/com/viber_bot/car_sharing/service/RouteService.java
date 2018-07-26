@@ -31,7 +31,7 @@ public class RouteService {
         routeToEdit.setDestination(route.getDestination());
         routeToEdit.setDate(route.getDate());
         routeToEdit.setTime(route.getTime());
-        routeToEdit.setAvaliableSeats(route.getAvaliableseats());
+        routeToEdit.setAvaliableseats(route.getAvaliableseats());
         return  routeToEdit;
     }
     public List<Route> findAllByViberId(String viberID){

@@ -89,7 +89,7 @@ public class RouteController {
         route.setDestination(destination);
         route.setDate(editeddate);
         route.setTime(LocalTime.parse(time));
-        route.setAvaliableSeats(avaliableseats);
+        route.setAvaliableseats(avaliableseats);
 
         List<Route> rList = new ArrayList<>();
         rList = routeService.findAll();

@@ -67,6 +67,8 @@ public class Reservation implements Serializable {
         return reserveadSeats;
     }
 
+
+
     public void setReserveadSeats(int reserveadSeats) {
         this.reserveadSeats = reserveadSeats;
     }

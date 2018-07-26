@@ -90,12 +90,6 @@ public class Route {
 
     public void setTime(LocalTime time) { this.time = time; }
 
-    public void setAvaliableSeats(int avalibleseats) { this.avaliableseats = avaliableseats; }
-
-    public List<Reservation> getReservations() { return reservations; }
-
-    public void setReservations(List<Reservation> reservations) { this.reservations = reservations; }
-
     public int getAvaliableseats() {
         return avaliableseats;
     }
@@ -103,6 +97,12 @@ public class Route {
     public void setAvaliableseats(int avaliableseats) {
         this.avaliableseats = avaliableseats;
     }
+
+    public List<Reservation> getReservations() { return reservations; }
+
+    public void setReservations(List<Reservation> reservations) { this.reservations = reservations; }
+
+
     @Override
     public String toString() {
         return "Start: " + this.start + " / "  + " Destination: " + this.destination + " / "
