@@ -8,9 +8,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .logoutLblPos{
+            position:fixed;
+            right:10px;
+            top:5px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -30,16 +37,21 @@
             </ul>
 
         </div>
-        <a th:href="@{/login}">
-            <button type="button" class="btn btn-light">Log Out</button>
-        </a>
+        <!--<a th:href="@{/login}">-->
+        <!--<button type="button" class="btn btn-light">Log Out</button>-->
+        <!--</a>-->
+        <label class="logoutLblPos">
+            <a th:href="@{/login}">
+                <button type="button" class="btn btn-outline-light">Log Out</button>
+            </a>
+        </label>
     </nav>
 
     <h2>Routes</h2>
     <div th:if="${message}" class="alert alert-success" role="alert">
         <p th:text="${message}">succes message</p>
     </div>
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
         <tr>
             <!--<th>Route id</th>-->
@@ -48,6 +60,8 @@
             <th>Date</th>
             <th>Time</th>
             <th>Avaliable Seats</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -66,11 +80,12 @@
                 <button method="GET" action="deleteRoute" type="button" class="btn btn-danger">Delete</button>
             </a></td>
         </tr>
-        <td><a th:href="@{/routes/add/}">
-            <button method="POST" type="button" class="btn btn-success">Add</button>
-        </a></td>
+
         </tbody>
     </table>
+    <a th:href="@{/routes/add/}">
+        <button method="POST" type="button" class="btn btn-success">Add</button>
+    </a>
 </div>
 </body>
 </html>

@@ -13,7 +13,7 @@
     body {
         opacity:0;
         transition:opacity 1.5s;
-        background-image: url(http://www.travelchoice.org.uk/wp-content/uploads/2013/09/Travelchoice-CarSharingLogo1.jpg);
+        <!--background-image: url();-->
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: bottom;
@@ -23,52 +23,98 @@
 	    min-height: 400px;
 	    background-image: url('../images/showcase.jpg') /*no-repeat 0 -400px*/;
 	    text-align: center;
-	    color: #0C1364;
+	    color: #000;
     }
 
     #showcase h1{
 	    margin-top: 100px;
-	    font-size: 55px;
+	    font-size: 75px;
 	    margin-bottom: 10px;
     }
 
     #showcase p{
-	    font-size: 20px;
+	    font-size: 45px;
+	    color: #7E007E;
     }
+
+.logoutLblPos{
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+
+/*ContainerSection*/
+.containerSection{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+    text-align:center;
+    margin:auto;
+}
+.containerSection img{
+	width: 90px;
+	height: auto;
+}
+.containerSection img:hover{
+	opacity: 0.5;
+}
+.containerSection div{
+	border: 1px ridge;
+	<!--padding: 0px;-->
+	background-color: #fff;
+	text-align: center;
+}
+.box{
+    width:100%;
+    max-width:30%;
+    margin:5px;
+}
+
+.box p{
+    color: #7E007E;
+}
+
+@media only screen and ( max-width:768px ){
+    .box{
+        width:100%;
+        max-width:40%;
+    }
+}
     </style>
 </head>
 <body onload="document.body.style.opacity = '1'">
 <div class="container">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index">Home<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/routes">Routes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/reservations">Reservations</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users">Users</a>
-                </li>
-            </ul>
-
-        </div>
+    <label class="logoutLblPos">
         <a th:href="@{/login}">
-            <button type="button" class="btn btn-light">Log Out</button>
+            <button type="button" class="btn btn-outline-dark">Log Out</button>
         </a>
-    </nav>
+    </label>
 
     <section id="showcase">
         <div class="container">
             <h1>VIST team</h1>
-            <p>Use navigation bar to manage users, routes and reservations.</p>
+            <p>Welcome to admin panel.</p>
         </div>
     </section>
+
+    <div class="containerSection">
+        <div class="box">
+            <a th:href="@{/routes}"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-journey.png"></a>
+            <h2>Routes</h2>
+            <p>You can add, edit and delete routes.</p>
+        </div>
+        <div class="box">
+            <a th:href="@{/reservations}"><img src="http://cdn.onlinewebfonts.com/svg/img_356702.png"></a>
+            <h2>Reservations</h2>
+            <p>You can read and delete reservations.</p>
+        </div>
+        <div class="box">
+            <a th:href="@{/users}"><img src="https://png.icons8.com/android/1600/user.png"></a>
+            <h2>Users</h2>
+            <p>You can read all users.</p>
+        </div>
+    </div>
 </div>
 </body>
 </html>
