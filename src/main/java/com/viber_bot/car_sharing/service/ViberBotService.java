@@ -368,7 +368,8 @@ public class ViberBotService {
         button.put("TextVAlign", "center");
         button.put("ActionType", actionType);
         button.put("ActionBody", actionBody);
-        //button.put("ButtonColor",Bgcolor);
+        button.put("ButtonColor",Bgcolor);
+        
         return button;
     }
 
