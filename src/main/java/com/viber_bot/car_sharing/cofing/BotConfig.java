@@ -15,8 +15,8 @@ import com.viber.bot.profile.BotProfile;
 public class BotConfig {
 
     @Value("${application.viber-bot.auth-token}")
-    private String authorizationToken="45758d2a08b06e2e-47a4b4dcc1e20791-65c6341517db8fa8";
-
+   // private String authorizationToken="45758d2a08b06e2e-47a4b4dcc1e20791-65c6341517db8fa8";
+    private  String authorizationToken;
     @Value("${application.viber-bot.name}")
     private String name;
 
@@ -27,12 +27,13 @@ public class BotConfig {
 
     @Bean
     ViberBot viberBot() {
-        return new ViberBot(new BotProfile("edit2018vist", "https://images-na.ssl-images-amazon.com/images/I/51-aTeYbibL._SY355_.png"), "45758d2a08b06e2e-47a4b4dcc1e20791-65c6341517db8fa8");
+      //  return new ViberBot(new BotProfile("edit2018vist", "https://images-na.ssl-images-amazon.com/images/I/51-aTeYbibL._SY355_.png"), "45758d2a08b06e2e-47a4b4dcc1e20791-65c6341517db8fa8");
+        return  new ViberBot(new BotProfile(name,avatar),authorizationToken);
     }
 
     @Bean
     ViberSignatureValidator signatureValidator() {
-        return new ViberSignatureValidator("45758d2a08b06e2e-47a4b4dcc1e20791-65c6341517db8fa8");
+        return new ViberSignatureValidator(authorizationToken);
     }
 
 }

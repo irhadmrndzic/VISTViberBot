@@ -37,6 +37,9 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
     @Inject
     private ViberBot bot;
 
+    @Inject
+    private ViberSignatureValidator signatureValidator;
+
     @Value("${application.viber-bot.webhook-url}")
     private String webhookUrl;
 
@@ -44,7 +47,7 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
     private ViberBotService viberService;
 
     @Override
-    public void onApplicationEvent(ApplicationReadyEvent appReadyEvent) {
+    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         try {
             bot.setWebhook(webhookUrl).get();
         } catch (Exception e) {
@@ -55,6 +58,16 @@ public class BotStartupConfig implements ApplicationListener<ApplicationReadyEve
         bot.onConversationStarted(event -> viberService.onConversationStarted(event));
         bot.onSubscribe((event, response) -> viberService.onSubscribe(event, response));
         bot.onUnsubscribe((event) -> viberService.onUnsubscribe(event));
+
+
+    }
+    @PostMapping(value = "/", produces = "application/json")
+    public String incoming(@RequestBody String json,
+                           @RequestHeader("X-Viber-Content-Signature") String serverSideSignature)
+            throws ExecutionException, InterruptedException, IOException {
+        Preconditions.checkState(signatureValidator.isSignatureValid(serverSideSignature, json), "invalid signature");
+        @Nullable InputStream response = bot.incoming(Request.fromJsonString(json)).get();
+        return response != null ? CharStreams.toString(new InputStreamReader(response, Charsets.UTF_16)) : null;
     }
 
 }
