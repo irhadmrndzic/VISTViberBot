@@ -45,10 +45,10 @@ public class ViberBotService {
                 null,null,null,null);
 
         ArrayList<Object> buttonArray = new ArrayList<Object>();
-        buttonArray.add(makeButtons(2,3,"Create a route", "reply", "createRoute","#45D1D0"));
-        buttonArray.add(makeButtons(2,3,"Apply to a route", "reply", "applyToRoute","#45D1D0"));
-        buttonArray.add(makeButtons(2,3,"View all active routes", "reply", "allRoutes","#45D1D0"));
-        buttonArray.add(makeButtons(2,3,"View my routes", "reply", "myRoutes","#45D1D0"));
+        buttonArray.add(makeButtons(2,3,"Create a route", "reply", "createRoute"));
+        buttonArray.add(makeButtons(2,3,"Apply to a route", "reply", "applyToRoute"));
+        buttonArray.add(makeButtons(2,3,"View all active routes", "reply", "allRoutes"));
+        buttonArray.add(makeButtons(2,3,"View my routes", "reply", "myRoutes"));
 
         MessageKeyboard keyboard = createKeyboard(buttonArray);
 
@@ -100,9 +100,9 @@ public class ViberBotService {
                 String name = StringUtils.substringBefore(route.getStart(), ",") + "-" +
                         StringUtils.substringBefore(route.getDestination(), ",");
                 buttonArray.add(makeButtons(1,6, name,
-                        "reply", String.valueOf(route.getId()),"#45D1D0"));
+                        "reply", String.valueOf(route.getId())));
             }
-            buttonArray.add(makeButtons(1,6,"Go back", "reply", "back","#45D1D0"));
+            buttonArray.add(makeButtons(1,6,"Go back", "reply", "back"));
             MessageKeyboard keyboard = createKeyboard(buttonArray);
             TrackingData trackingData = createTrackingData("onConversationStarted",    null,null,null,null,
                     null,null,null,null,
@@ -121,7 +121,7 @@ public class ViberBotService {
                     String name = StringUtils.substringBefore(route.getStart(), ",") + "-" +
                             StringUtils.substringBefore(route.getDestination(), ",");
                     buttonArray.add(makeButtons(1,6,name,
-                            "reply", String.valueOf(route.getId()),"#45D1D0"));
+                            "reply", String.valueOf(route.getId())));
                 }
 
             }
@@ -148,9 +148,9 @@ public class ViberBotService {
             ArrayList<Object> buttonArray = new ArrayList<Object>();
             for(Route route : routes){
                 buttonArray.add(makeButtons(1,6,route.getStart() + "-" + route.getDestination(),
-                        "reply", String.valueOf(route.getId()),"#45D1D0"));
+                        "reply", String.valueOf(route.getId())));
             }
-            buttonArray.add(makeButtons(1,6,"Go back", "reply", "back","#45D1D0"));
+            buttonArray.add(makeButtons(1,6,"Go back", "reply", "back"));
             MessageKeyboard keyboard = createKeyboard(buttonArray);
             TrackingData trackingData = createTrackingData("onConversationStarted",  null,null,null,null,
                     null,null,null,null,
@@ -219,9 +219,9 @@ public class ViberBotService {
             trackingData = createTrackingData(tdMap);
             for(int i = 0; i < 24; i++) {
                 if(i<10)
-                    buttons.add(makeButtons(1,6, "0"+ String.valueOf(i) + ":00", "reply", "0" + String.valueOf(i) + ":00","#45D1D0"));
+                    buttons.add(makeButtons(1,6, "0"+ String.valueOf(i) + ":00", "reply", "0" + String.valueOf(i) + ":00"));
                 else
-                    buttons.add(makeButtons(1,6,String.valueOf(i) + ":00", "reply", String.valueOf(i) + ":00","#45D1D0"));
+                    buttons.add(makeButtons(1,6,String.valueOf(i) + ":00", "reply", String.valueOf(i) + ":00"));
             }
             MessageKeyboard keyboard = createKeyboard(buttons);
             response.send(new TextMessage("Enter time: ", keyboard, trackingData));
@@ -237,7 +237,7 @@ public class ViberBotService {
             tdMap.put("time", message.getMapRepresentation().get("text").toString());
             trackingData = createTrackingData(tdMap);
             for(int i = 0; i < 5; i++) {
-                buttons.add(makeButtons(1,6, String.valueOf(i), "reply", String.valueOf(i),"#45D1D0"));
+                buttons.add(makeButtons(1,6, String.valueOf(i), "reply", String.valueOf(i)));
             }
             MessageKeyboard keyboard = createKeyboard(buttons);
             response.send(new TextMessage("Enter available seats: ", keyboard, trackingData));
@@ -255,8 +255,8 @@ public class ViberBotService {
                     "\nDate: " + route.getDate().toString() + "\nTime: " + route.getTime() +
                     "\nAvailable seats: " + route.getAvaliableseats();
 
-            buttons.add(makeButtons(1,6, "Confirm", "reply", "confirmRoute","#45D1D0"));
-            buttons.add(makeButtons(1,6, "Cancel", "reply", "cancelRoute","#45D1D0"));
+            buttons.add(makeButtons(1,6, "Confirm", "reply", "confirmRoute"));
+            buttons.add(makeButtons(1,6, "Cancel", "reply", "cancelRoute"));
             tdMap.put("step", "createRoute");
             tdMap.put("createRoute", "confirmRoute");
             tdMap.put("route", route.getId());
@@ -285,8 +285,8 @@ public class ViberBotService {
                     "routeId", String.valueOf(route.getId()),
                     null,null,null,null,
                     null,null,null,null);
-            buttons.add(makeButtons(1,6, "Confirm", "reply", "confirmApply","#45D1D0"));
-            buttons.add(makeButtons(1,6, "Cancel", "reply", "cancelApply","#45D1D0"));
+            buttons.add(makeButtons(1,6, "Confirm", "reply", "confirmApply"));
+            buttons.add(makeButtons(1,6, "Cancel", "reply", "cancelApply"));
             MessageKeyboard keyboard = createKeyboard(buttons);
             response.send(new TextMessage("Apply to this route:\n" +
                     "Start: " + route.getStart() +
@@ -357,7 +357,7 @@ public class ViberBotService {
     }
 
     private Map<String, Object> makeButtons(Integer rows, Integer columns, String text,
-                                            String actionType ,String actionBody,String Bgcolor) {
+                                            String actionType ,String actionBody) {
         Map<String, Object> button = new HashMap<String, Object>();
 
         button.put("Columns", columns);
@@ -377,10 +377,10 @@ public class ViberBotService {
                 null,null,null,null,null,null);
 
         ArrayList<Object> buttonArray = new ArrayList<Object>();
-        buttonArray.add(makeButtons(2,3,"Create a route", "reply", "createRoute","#45D1D0"));
-        buttonArray.add(makeButtons(2,3,"Apply to a route", "reply", "applyToRoute","#45D1D0"));
-        buttonArray.add(makeButtons(2,3,"View all active routes", "reply", "allRoutes","#45D1D0"));
-        buttonArray.add(makeButtons(2,3,"View my routes", "reply", "myRoutes","#45D1D0"));
+        buttonArray.add(makeButtons(2,3,"Create a route", "reply", "createRoute"));
+        buttonArray.add(makeButtons(2,3,"Apply to a route", "reply", "applyToRoute"));
+        buttonArray.add(makeButtons(2,3,"View all active routes", "reply", "allRoutes"));
+        buttonArray.add(makeButtons(2,3,"View my routes", "reply", "myRoutes"));
 
         MessageKeyboard keyboard = createKeyboard(buttonArray);
 
