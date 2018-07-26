@@ -58,4 +58,14 @@ public class WebController {
     public String getMain(Model model) {
         return "Main";
     }
+
+    @Autowired
+    private UserService userService;
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String getAllUsers(Model model) {
+        List<User> uList = new ArrayList<>();
+        uList = userService.findAll();
+        model.addAttribute("users",uList);
+        return "User/Users";
+    }
 }

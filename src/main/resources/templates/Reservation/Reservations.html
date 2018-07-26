@@ -44,15 +44,21 @@
         <tr>
             <!--<th>Reservation id</th>-->
             <th>User</th>
-            <th>Route</th>
+            <th>Route start</th>
+            <th>Route destination</th>
+            <th>Date</th>
+            <th>Time</th>
             <th>Reservead seats</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="reservation:${reservations}">
             <!--<td th:text="${reservation.id}"></td>-->
-            <td th:text="${reservation.user}"></td>
-            <td th:text="${reservation.route}"></td>
+            <td th:text="${reservation.user.name}"></td>
+            <td th:text="${reservation.route.start}"></td>
+            <td th:text="${reservation.route.destination}"></td>
+            <td th:text="${reservation.route.date}"></td>
+            <td th:text="${reservation.route.time}"></td>
             <td th:text="${reservation.reserveadSeats}"></td>
 
             <td><a th:href="@{/reservations/delete/} + ${reservation.id}">
